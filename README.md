@@ -9,7 +9,7 @@
 
 > 2026 Qoder 天池大赛 · StudyHack 赛道参赛作品。当前版本 **1.2.0**，minAppVersion **1.14.4**。
 >
-> 源码仓库：<https://github.com/hqy2026/qynote-compilation> · 在线演示：<https://vaultcoach-lp9v9mm3elt.qoder.zone> · 安装包下载：<https://vaultcoach-lp9v9mm3elt.qoder.zone/download/qynote-compilation.zip>
+> 源码仓库：<https://github.com/hqy2026/qynote-compilation> · 在线演示：<https://vaultcoach-lp9v9mm3elt.qoder.zone> · 安装包下载：<https://vaultcoach-lp9v9mm3elt.qoder.zone/download/qynote-compilation.zip> · GitHub Release：<https://github.com/hqy2026/qynote-compilation/releases/tag/v1.2.0>
 
 ---
 
