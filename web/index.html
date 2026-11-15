@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QYNote Compilation · 循证整理 Obsidian 笔记</title>
+  <meta name="description" content="QYNote Compilation 是本地优先的 Obsidian 整理插件。在线体验双链推荐、差异预览、确认写回与撤销。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#workbench">跳到交互演示</a>
+
+  <header class="site-header">
+    <div class="shell header-shell">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <strong>QYNote Compilation</strong>
+      </div>
+      <nav aria-label="页面导航">
+        <a href="#workbench">体验</a>
+        <a href="#features">功能</a>
+        <a href="#process">开发过程</a>
+        <a href="#privacy">隐私</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro shell">
+      <div>
+        <p class="eyebrow">2026 Qoder 高校创造力大赛 · StudyHack</p>
+        <h1>让散落的笔记，连成可验证的知识网</h1>
+        <p class="lead">QYNote Compilation 是一个本地优先的 Obsidian 整理插件：循证推荐双链、诊断重复与矛盾、生成整库整理计划，预览确认后仅追加写回、可随时撤销。下面是可操作的示例笔记库。</p>
+      </div>
+      <dl class="quick-facts">
+        <div><dt>整理入口</dt><dd>2 个</dd></div>
+        <div><dt>自动化测试</dt><dd>33 项</dd></div>
+        <div><dt>性能基准</dt><dd>1013 篇</dd></div>
+      </dl>
+    </section>
+
+    <section id="workbench" class="workbench shell" aria-labelledby="workbench-title">
+      <h2 id="workbench-title" class="section-title">在线交互演示</h2>
+      <div class="workbench-grid">
+        <aside class="vault-panel" aria-label="示例 Obsidian 笔记库">
+          <div class="panel-heading">
+            <div>
+              <strong>示例笔记库</strong>
+              <span id="vaultCount" class="muted">8 篇笔记</span>
+            </div>
+            <button id="resetDemo" class="text-button" type="button">重置演示</button>
+          </div>
+          <div id="fileList" class="file-list" role="listbox" aria-label="笔记列表"></div>
+          <div class="note-preview">
+            <div class="note-preview__title">
+              <strong id="noteTitle">学习科学</strong>
+              <span id="notePath" class="muted">学习科学.md</span>
+            </div>
+            <pre id="noteContent" aria-live="polite"></pre>
+          </div>
+        </aside>
+
+        <section class="coach-panel" aria-label="QYNote Compilation 操作面板">
+          <div class="coach-heading">
+            <div>
+              <h3>QYNote Compilation</h3>
+              <p>循证整理 · 双链推荐 + 整库计划</p>
+            </div>
+            <span class="local-badge">本地演示数据</span>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="演示功能">
+            <button class="tab is-active" role="tab" type="button" aria-selected="true" aria-controls="organize-panel" id="organize-tab" data-tab="organize">整理</button>
+            <button class="tab" role="tab" type="button" aria-selected="false" aria-controls="plan-panel" id="plan-tab" data-tab="plan">计划</button>
+          </div>
+
+          <div id="organize-panel" class="organize-panel">
+            <p class="panel-note">正在整理：<strong id="organizeCurrent">学习科学</strong></p>
+            <div id="suggestions" class="suggestions" aria-live="polite"></div>
+            <div id="organizeResult" class="result" aria-live="polite"></div>
+            <div id="diffPreview" class="diff-preview" hidden>
+              <h4>修改预览</h4>
+              <p id="diffDescription" class="muted"></p>
+              <div class="diff-columns">
+                <div>
+                  <span>修改前</span>
+                  <pre id="diffBefore"></pre>
+                </div>
+                <div>
+                  <span>确认后</span>
+                  <pre id="diffAfter"></pre>
+                </div>
+              </div>
+              <div class="button-row">
+                <button id="cancelDiff" class="button secondary" type="button">取消</button>
+                <button id="confirmDiff" class="button primary" type="button">确认写回</button>
+              </div>
+            </div>
+            <button id="undoOrganization" class="text-button" type="button" hidden>撤销上次整理</button>
+          </div>
+
+          <div id="plan-panel" class="organize-panel" hidden>
+            <p class="panel-note">扫描全库，生成每个文件最多改一处的整理计划：合并高相似重复、标注矛盾、补高置信双链。仅追加、不删除，可整体撤销。</p>
+            <div class="button-row">
+              <button id="planGenerate" class="button primary" type="button">生成整库计划</button>
+              <button id="planPreviewApply" class="button secondary" type="button">预览全部并应用</button>
+            </div>
+            <div id="planResult" class="result" aria-live="polite"></div>
+            <div id="planList" class="suggestions" aria-live="polite"></div>
+            <div id="planConfirm" class="diff-preview" hidden>
+              <h4>确认整库整理计划</h4>
+              <div id="planConfirmBody"></div>
+              <div class="button-row">
+                <button id="planConfirmCancel" class="button secondary" type="button">取消</button>
+                <button id="planConfirmApply" class="button primary" type="button">确认应用</button>
+              </div>
+            </div>
+            <div class="button-row">
+              <button id="planQuick" class="button primary" type="button" hidden>一键应用全部</button>
+              <button id="planUndo" class="text-button" type="button" hidden>撤销上次整理</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <ol class="steps">
+        <li><strong>选择笔记</strong><span>在左侧示例笔记库中打开一篇笔记。</span></li>
+        <li><strong>查看证据与预览</strong><span>推荐附共同词元与目标摘录，点开可看修改前后差异。</span></li>
+        <li><strong>确认写回</strong><span>仅追加双链与标签，不改原文，可随时撤销。</span></li>
+      </ol>
+    </section>
+
+    <section id="features" class="content-section shell">
+      <h2 class="section-title">它解决什么问题</h2>
+      <div class="feature-grid">
+        <article>
+          <span class="feature-index">01</span>
+          <h3>关联必须可验证</h3>
+          <p>推荐双链时展示共同词元和目标摘录，不是凭空连线；每条建议都能追溯到笔记原文。</p>
+        </article>
+        <article>
+          <span class="feature-index">02</span>
+          <h3>写回先预览再确认</h3>
+          <p>查看修改前后的差异，确认后才追加写回；写入前自动备份，支持一键撤销。</p>
+        </article>
+        <article>
+          <span class="feature-index">03</span>
+          <h3>诊断有据可查</h3>
+          <p>自动找出近似重复、相互矛盾和缺少来源的观点句，每条都附证据与行号，供人工核对。</p>
+        </article>
+        <article>
+          <span class="feature-index">04</span>
+          <h3>整库计划一键整理</h3>
+          <p>扫描全库生成每个文件至多改一处的计划：合并重复、标注矛盾、补双链；仅追加、不删除，可整体回滚。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="process" class="content-section shell">
+      <h2 class="section-title">使用 Qoder 完成的过程</h2>
+      <div class="timeline">
+        <article>
+          <span>阶段 1</span>
+          <h3>从竞品实测收敛方向</h3>
+          <p>使用 Qoder 浏览并实测多个 StudyHack、LifeHack 和 Hack4Good 作品，确认“功能多但三分钟核心不清楚”是常见问题，最终选择 Obsidian 循证整理。</p>
+        </article>
+        <article>
+          <span>阶段 2</span>
+          <h3>Qoder 生成可编译插件骨架</h3>
+          <p>由 Qoder 建立 TypeScript、esbuild、Obsidian API、本地索引和侧边栏，并完成首次构建验证。</p>
+        </article>
+        <article>
+          <span>阶段 3</span>
+          <h3>实现整理闭环</h3>
+          <p>逐步加入双链建议、差异预览、确认写回、撤销与整库整理计划，并根据反馈把范围收敛为仅整理笔记。</p>
+        </article>
+        <article>
+          <span>阶段 4</span>
+          <h3>用真实环境发现并修复问题</h3>
+          <p>Qoder 在隔离 Obsidian 测试库中执行端到端操作，发现首次 data.json 初始化、中文机械二字切分和刷新卡顿等问题，并逐项修复。</p>
+        </article>
+        <article>
+          <span>阶段 5</span>
+          <h3>简化与性能验证</h3>
+          <p>根据反馈把界面收敛为整理与计划两个入口；普通刷新不再运行全库两两比较。1013 篇笔记测试中，首次刷新约 40.8ms，缓存刷新约 11.8ms。</p>
+        </article>
+        <article>
+          <span>阶段 6</span>
+          <h3>部署 Qoder Sites</h3>
+          <p>将插件核心流程转成无需后端的浏览器交互演示，通过 Qoder Sites 发布为评委可直接访问的公开页面。</p>
+        </article>
+      </div>
+      <p class="process-note">提交论坛帖时，可在本页补充 Qoder 对话、构建命令和 Obsidian 操作的原始截图；网站只展示已经真实完成的过程，不伪造未发生的对话。</p>
+    </section>
+
+    <section id="privacy" class="content-section shell">
+      <h2 class="section-title">隐私、原创与边界</h2>
+      <div class="statement-grid">
+        <article>
+          <h3>本地优先</h3>
+          <p>插件索引、关联建议、诊断与整理计划都在本地完成，全程不联网，不需要账号或 API 密钥。</p>
+        </article>
+        <article>
+          <h3>原创声明</h3>
+          <p>作品由参赛者与 Qoder 在本次活动中从零构思、开发和验证。Obsidian 与 Qoder 为项目使用的外部平台，不代表官方出品。</p>
+        </article>
+        <article>
+          <h3>当前边界</h3>
+          <p>推荐基于本地词元相似度和 TF-IDF，不是大模型语义判断；重复与矛盾只作为人工核对候选，所有写回都需预览确认、仅追加、可撤销。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-shell">
+      <span>QYNote Compilation · StudyHack 参赛作品</span>
+      <a href="#workbench">回到交互演示</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

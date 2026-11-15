@@ -1,0 +1,15 @@
+node_modules/
+main.js
+main.js.map
+.data.json
+.test-vault/
+.DS_Store
+mcp/analysis.mjs
+mcp/review.mjs
+mcp/tidy-plan.mjs
+mcp/dist/
+.qynote-mcp-backups/
+.obsidian-test-profile/
+*.qoder.site
+qynote-compilation/
+web/download/

@@ -1,0 +1,223 @@
+.qynote-compilation {
+  padding: 12px;
+}
+
+.qynote-compilation__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.qynote-compilation__header h3 {
+  margin: 0 0 4px;
+}
+
+.qynote-compilation__description,
+.qynote-compilation__muted {
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.qynote-compilation__description {
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.qynote-compilation__tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 3px;
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.qynote-compilation__tabs button {
+  flex: 1;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.qynote-compilation__tabs button.is-active {
+  background: var(--background-primary);
+  color: var(--text-accent);
+  box-shadow: var(--shadow-s);
+}
+
+.qynote-compilation__section-title {
+  margin: 16px 0 8px;
+  font-size: var(--font-ui-medium);
+}
+
+.qynote-compilation__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.qynote-compilation__current-note,
+.qynote-compilation__suggestion {
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.qynote-compilation__current-note {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.qynote-compilation__current-note span {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  text-overflow: ellipsis;
+}
+
+.qynote-compilation__suggestion p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.qynote-compilation__disclosure {
+  margin: 8px 0;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.qynote-compilation__disclosure summary {
+  padding: 8px 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.qynote-compilation__empty {
+  margin: 8px 0;
+  padding: 16px;
+  border: 1px dashed var(--background-modifier-border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.qynote-compilation__footer {
+  margin-top: 16px;
+}
+
+.qynote-compilation__modal {
+  width: min(680px, 78vw);
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.qynote-compilation__diff {
+  max-height: 52vh;
+  overflow: auto;
+  margin: 12px 0;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+}
+
+.qynote-compilation__diff pre {
+  margin: 0;
+  padding: 2px 8px;
+  font-size: var(--font-ui-smaller);
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.qynote-compilation__diff-added {
+  background: rgba(var(--color-green-rgb), 0.14);
+  color: var(--color-green);
+}
+
+.qynote-compilation__diff-removed {
+  background: rgba(var(--color-red-rgb), 0.12);
+  color: var(--color-red);
+}
+
+.qynote-compilation__diff-context {
+  color: var(--text-muted);
+}
+
+.qynote-compilation__plan-item,
+.qynote-compilation__plan-change {
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.qynote-compilation__plan-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qynote-compilation__plan-head strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qynote-compilation__plan-kind {
+  flex-shrink: 0;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: var(--font-ui-smaller);
+  background: var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+.qynote-compilation__plan-kind.is-merge {
+  background: rgba(var(--color-green-rgb), 0.16);
+  color: var(--color-green);
+}
+
+.qynote-compilation__plan-kind.is-contradiction {
+  background: rgba(var(--color-orange-rgb), 0.18);
+  color: var(--color-orange);
+}
+
+.qynote-compilation__plan-kind.is-link {
+  background: rgba(var(--color-blue-rgb), 0.16);
+  color: var(--color-blue);
+}
+
+.qynote-compilation__plan-item p,
+.qynote-compilation__plan-change p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.qynote-compilation__plan-tail {
+  margin: 6px 0 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: var(--background-primary);
+  font-family: var(--font-monospace);
+  font-size: var(--font-ui-smaller);
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.qynote-compilation__plan-change h4 {
+  margin: 0 0 4px;
+}
+
+@media (max-width: 600px) {
+  .qynote-compilation__modal {
+    width: 100%;
+    max-height: 80vh;
+  }
+}

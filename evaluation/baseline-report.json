@@ -1,0 +1,87 @@
+{
+  "generatedAt": "2026-11-15T01:26:10.228Z",
+  "algorithm": "Intl.Segmenter + TF-IDF cosine",
+  "totalCases": 50,
+  "positiveCases": 25,
+  "negativeCases": 25,
+  "top1Accuracy": 0.96,
+  "top3Recall": 1,
+  "negativeFalsePositiveRate": 0,
+  "byKind": {
+    "同义改写": {
+      "cases": 10,
+      "top1": 10,
+      "top3": 10,
+      "falsePositives": 0,
+      "top1Accuracy": "100.0%",
+      "top3Recall": "100.0%",
+      "falsePositiveRate": "0.0%"
+    },
+    "词面重合": {
+      "cases": 5,
+      "top1": 4,
+      "top3": 5,
+      "falsePositives": 0,
+      "top1Accuracy": "80.0%",
+      "top3Recall": "100.0%",
+      "falsePositiveRate": "0.0%"
+    },
+    "模板噪声": {
+      "cases": 10,
+      "top1": 0,
+      "top3": 0,
+      "falsePositives": 0,
+      "top1Accuracy": "0.0%",
+      "top3Recall": "0.0%",
+      "falsePositiveRate": "0.0%"
+    },
+    "无关笔记": {
+      "cases": 10,
+      "top1": 0,
+      "top3": 0,
+      "falsePositives": 0,
+      "top1Accuracy": "0.0%",
+      "top3Recall": "0.0%",
+      "falsePositiveRate": "0.0%"
+    },
+    "短碎片": {
+      "cases": 5,
+      "top1": 5,
+      "top3": 5,
+      "falsePositives": 0,
+      "top1Accuracy": "100.0%",
+      "top3Recall": "100.0%",
+      "falsePositiveRate": "0.0%"
+    },
+    "长文摘要": {
+      "cases": 5,
+      "top1": 5,
+      "top3": 5,
+      "falsePositives": 0,
+      "top1Accuracy": "100.0%",
+      "top3Recall": "100.0%",
+      "falsePositiveRate": "0.0%"
+    },
+    "标题相近": {
+      "cases": 5,
+      "top1": 0,
+      "top3": 0,
+      "falsePositives": 0,
+      "top1Accuracy": "0.0%",
+      "top3Recall": "0.0%",
+      "falsePositiveRate": "0.0%"
+    }
+  },
+  "failures": [
+    {
+      "id": "词面重合-14",
+      "kind": "词面重合",
+      "expected": "评测/词面重合/词面重合-14-目标.md",
+      "actual": [
+        "评测/同义改写/同义改写-06-来源.md",
+        "评测/词面重合/词面重合-14-目标.md",
+        "评测/同义改写/同义改写-06-目标.md"
+      ]
+    }
+  ]
+}

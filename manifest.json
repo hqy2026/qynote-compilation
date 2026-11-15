@@ -1,0 +1,9 @@
+{
+  "id": "qynote-compilation",
+  "name": "QYNote Compilation",
+  "version": "1.2.0",
+  "minAppVersion": "1.14.4",
+  "description": "循证整理笔记：双链推荐与整库整理计划，预览确认后仅追加写回、可撤销，纯本地不联网。",
+  "author": "QYNote Compilation",
+  "isDesktopOnly": false
+}
